@@ -45,9 +45,13 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 
 clean:
 	make -C $(MINILIBX_DIR) clean
+	make -C $(LIBFT_DIR) clean
+	make -C $(FTPRINTF_DIR) clean
 	$(RM) -r $(OBJDIR)
 
 fclean: clean
+	make -C $(LIBFT_DIR) fclean
+	make -C $(FTPRINTF_DIR) fclean
 	$(RM) $(NAME)
 
 re: fclean all
