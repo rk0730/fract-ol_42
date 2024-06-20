@@ -5,23 +5,37 @@ RM = rm -f
 MINILIBX_DIR = minilibx_opengl_20191021
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+FTPRINTF_DIR = ft_printf
+FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a
+
 SRCDIR = src
-SRCS = $(SRCDIR)/sample.c
+# SRCS = $(SRCDIR)/ft_main.c
+
+SRCS = $(SRCDIR)/gpt.c
 
 OBJDIR = obj
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-INCLUDES = -I$(MINILIBX_DIR)
+INCLUDES = -I$(MINILIBX_DIR) -I$(SRCDIR) -I$(LIBFT_DIR) -I$(FTPRINTF_DIR)
 
-NAME = sample
+NAME = fractol
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MINILIBX)
+$(NAME): $(OBJS) $(MINILIBX) $(LIBFT) $(FTPRINTF)
 	$(CC) $(INCLUDES) -framework OpenGL -framework AppKit -o $@ $^
 
 $(MINILIBX):
 	make -C $(MINILIBX_DIR)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+
+$(FTPRINTF):
+	make -C $(FTPRINTF_DIR)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
