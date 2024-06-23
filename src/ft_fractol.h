@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/06/23 14:14:16 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/06/23 15:02:24 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ enum e_keycode
 	KEY_ESC = 53
 };
 
-void draw_mandelbrot(t_mlx *mlx);
-
+void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport);
+int	ft_zoom(int event, int x, int y, t_vars *vars);
 
 # endif

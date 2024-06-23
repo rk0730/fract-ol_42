@@ -5,7 +5,7 @@
 
 // マンデルブロ集合の描画
 
-void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
+static void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
 	float c = v * s;
 	float x = c * (1 - abs((int)(h * 6) % 2 - 1));
 	float m = v - c;
@@ -50,14 +50,17 @@ static int	mandelbrot(double real, double imag)
 	return (iter);
 }
 
-void draw_mandelbrot(t_mlx *mlx) {
+void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport)
+{
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			double real = (x - WIDTH / 2.0) * 4.0 / WIDTH;
-			double imag = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
+			// double real = (x - WIDTH / 2.0) * 4.0 / WIDTH;
+			double real = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
+			double imag = viewport->i_min + (y * (viewport->i_max - viewport->i_min) / HEIGHT);
+			// double imag = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
 			int iter = mandelbrot(real, imag);
 			if (x % 40 == 0 && y % 30 == 0) {
-				printf("x: %d, y: %d, iter: %d\n", x, y, iter);
+				// printf("x: %d, y: %d, iter: %d\n", x, y, iter);
 			}
 			if (iter == 1000 || iter == 1) {
 				//黒にする
