@@ -74,11 +74,11 @@ void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport)
 			if (iter == 2 || iter == 3)
 				h = 0.66;
 			else if (4 <= iter && iter <= 6)
-				h = 0.33;
+				h = 0.08;
 			else if (7 <= iter && iter <= 9)
 				h = 0.16;
 			else if (10 <= iter && iter <= 100)
-				h = 0.08;
+				h = 0.30;
 			else
 				h = 0.04;
 			int r, g, b;
