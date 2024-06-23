@@ -3,52 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/06/20 20:34:43 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/06/23 14:14:33 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
+#include "ft_fractol.h"
 
-#include "libft.h"
-#include "ft_printf.h"
-#include "mlx.h"
-
-#define WIDTH 800
-#define HEIGHT 600
-
-typedef struct
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*data_addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-}			t_mlx;
-
-// enum e_event
-// {
-// 	ON_KEYDOWN = 2,
-// 	ON_KEYUP = 3,
-// 	ON_MOUSEDOWN = 4,
-// 	ON_MOUSEUP = 5,
-// 	ON_MOUSEMOVE = 6,
-// 	ON_EXPOSE = 12,
-// 	ON_DESTROY = 17
-// };
-
-enum e_keycode
-{
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_W = 13,
-	KEY_ESC = 53
-};
+#include <stdio.h>
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
@@ -60,28 +24,50 @@ int	key_hook(int keycode, t_mlx *mlx)
 	return (0);
 }
 
+int	mouse_scroll(int button, int x, int y, t_mlx *mlx)
+{
+	if (mlx->win == NULL)
+		printf("");
+	if (button == SCROLL_UP)
+	{
+		printf("scroll up   x: %d y: %d\n", x, y);
+	}
+	else if (button == SCROLL_DOWN)
+	{
+		printf("scroll down x: %d y: %d\n", x, y);
+	}
+	return (0);
+}
+
+static void	ft_init(t_vars *vars)
+{
+	vars->viewport_info->r_max = 2.0;
+	vars->viewport_info->r_min = -2.0;
+	vars->viewport_info->i_max = 2.0;
+	vars->viewport_info->i_min = -2.0;
+	vars->mlx_info->mlx = mlx_init();
+	vars->mlx_info->win = mlx_new_window(vars->mlx_info->mlx, WIDTH, HEIGHT, "rkitao");
+	vars->mlx_info->img = mlx_new_image(vars->mlx_info->mlx, WIDTH, HEIGHT);
+	vars->mlx_info->data_addr = mlx_get_data_addr(vars->mlx_info->img,
+		&(vars->mlx_info->bpp), &(vars->mlx_info->size_line),
+		&(vars->mlx_info->endian));
+}
 
 int	main(int argc, char **argv)
 {
 	if (argc == 0)
 		ft_printf("%s\n", argv[0]);
-
+	
+	t_vars	vars;
 	t_mlx	mlx;
-
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "rkitao");
-	mlx.img = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
-	mlx.data_addr = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
-	for (int x = 300; x < 500; x++)
-	{
-		for (int y = 200; y < 400; y++)
-		{
-			char *dst;
-			dst = mlx.data_addr + (y * mlx.size_line + x * (mlx.bpp / 8));
-			*(unsigned int *)dst = 0xff69b4;
-		}
-	}
+	t_viewport	viewport;
+	
+	vars.mlx_info = &mlx;
+	vars.viewport_info = &viewport;
+	ft_init(&vars);
+	draw_mandelbrot(&mlx);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
+	mlx_mouse_hook(mlx.win, mouse_scroll, &mlx);
 	mlx_key_hook(mlx.win, key_hook, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);

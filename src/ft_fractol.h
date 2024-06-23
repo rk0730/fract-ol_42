@@ -1,0 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fractol.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
+/*   Updated: 2024/06/23 14:14:16 by rkitao           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_FRACTOL_H
+# define FT_FRACTOL_H
+
+# include <mlx.h>
+# include <math.h>
+# include "libft.h"
+# include "ft_printf.h"
+
+# define WIDTH 400
+# define HEIGHT 300
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*data_addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}	t_mlx;
+
+typedef struct s_viewport
+{
+	double	r_max;
+	double	r_min;
+	double	i_max;
+	double	i_min;
+}	t_viewport;
+
+typedef struct s_vars
+{
+	t_mlx		*mlx_info;
+	t_viewport	*viewport_info;
+}	t_vars;
+
+enum e_event
+{
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
+enum e_mouse_event
+{
+	LEFT_CLICK = 1,
+	RIGHT_CLICK = 2,
+	MIDDLE_CLICK = 3,
+	SCROLL_UP = 4,
+	SCROLL_DOWN = 5
+};
+
+enum e_keycode
+{
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_W = 13,
+	KEY_ESC = 53
+};
+
+void draw_mandelbrot(t_mlx *mlx);
+
+
+# endif

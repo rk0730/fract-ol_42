@@ -1,25 +1,9 @@
-#include "mlx.h"
-#include "libft.h"
-#include "ft_printf.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 
-#define WIDTH 400
-#define HEIGHT 300
+#include "ft_fractol.h"
+
+# include <stdio.h>
 
 // マンデルブロ集合の描画
-
-typedef struct
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*data_addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-}			t_mlx;
 
 void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
 	float c = v * s;
@@ -46,7 +30,7 @@ void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
 	*b = (b_prime + m) * 255;
 }
 
-int	mandelbrot(double real, double imag)
+static int	mandelbrot(double real, double imag)
 {
 	int		max_iter;
 	double	zr = 0.0, zi;
@@ -101,31 +85,4 @@ void draw_mandelbrot(t_mlx *mlx) {
 			*(unsigned int *)(mlx->data_addr + pos) = color;
 		}
 	}
-}
-
-int	key_hook(int keycode, t_mlx *mlx)
-{
-	if (keycode == 53)
-	{
-		mlx_destroy_image(mlx->mlx, mlx->img);
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		exit(0);
-	}
-	return (0);
-}
-
-int	main(void)
-{
-	t_mlx	mlx;
-
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Mandelbrot");
-	mlx.img = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
-	mlx.data_addr = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line,
-			&mlx.endian);
-	draw_mandelbrot(&mlx);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
-	mlx_key_hook(mlx.win, key_hook, &mlx);
-	mlx_loop(mlx.mlx);
-	return (0);
 }
