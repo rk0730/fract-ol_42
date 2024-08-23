@@ -1,8 +1,6 @@
 
 #include "ft_fractol.h"
 
-# include <stdio.h>
-
 // マンデルブロ集合の描画
 
 static void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
@@ -52,7 +50,7 @@ static int	mandelbrot(double real, double imag)
 
 void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport)
 {
-	for (int y = 0; y < HEIGHT; y++) {
+	for (int y = 0; y < HEIGHT; y++) {		
 		for (int x = 0; x < WIDTH; x++) {
 			// double real = (x - WIDTH / 2.0) * 4.0 / WIDTH;
 			double real = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);

@@ -1,8 +1,18 @@
+UNAME_S = $(shell uname -s)
+
 CC = cc
 CFLAGS=-Wall -Wextra -Werror
 RM = rm -f
 
-MINILIBX_DIR = minilibx_opengl_20191021
+# macOS用の設定
+ifeq ($(UNAME_S), Darwin)
+	MINILIBX_DIR = minilibx_opengl_20191021
+endif
+# Ubuntu用の設定
+ifeq ($(UNAME_S), Linux)
+	MINILIBX_DIR = minilibx-linux
+endif
+
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 LIBFT_DIR = libft
@@ -28,7 +38,14 @@ NAME = fractol
 all: $(NAME)
 
 $(NAME): $(OBJS) $(MINILIBX) $(LIBFT) $(FTPRINTF)
+# macOS用の設定
+ifeq ($(UNAME_S), Darwin)
 	$(CC) $(INCLUDES) -framework OpenGL -framework AppKit -o $@ $^
+endif
+# Ubuntu用の設定
+ifeq ($(UNAME_S), Linux)
+	$(CC) $(INCLUDES) -o $@ $^ -lX11 -lXext
+endif
 
 $(MINILIBX):
 	make -C $(MINILIBX_DIR)

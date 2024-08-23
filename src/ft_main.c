@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/06/23 14:53:37 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/08/24 00:58:10 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
-
-#include <stdio.h>
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
@@ -55,8 +53,8 @@ static void	ft_init(t_vars *vars)
 
 int	main(int argc, char **argv)
 {
-	if (argc == 0)
-		ft_printf("%s\n", argv[0]);
+	(void)argc;
+	(void)argv;
 
 	t_vars	vars;
 	t_mlx	mlx;
@@ -64,7 +62,9 @@ int	main(int argc, char **argv)
 	
 	vars.mlx_info = &mlx;
 	vars.viewport_info = &viewport;
+	printf("init\n");
 	ft_init(&vars);
+	printf("mandelbrot\n");
 	ft_mandelbrot(&mlx, &viewport);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
 	mlx_mouse_hook(mlx.win, ft_zoom, &vars);
