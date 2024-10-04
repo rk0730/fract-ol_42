@@ -25,6 +25,7 @@ SRCDIR = src
 SRCS = $(SRCDIR)/ft_main.c \
 	$(SRCDIR)/ft_mandelbrot.c \
 	$(SRCDIR)/ft_zoom.c \
+	$(SRCDIR)/ft_arg.c \
 
 # SRCS = $(SRCDIR)/gpt.c
 

@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/04 18:32:50 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/04 19:34:25 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int	key_hook(int keycode, t_mlx *mlx)
 // 	return (0);
 // }
 
-static void	ft_init(t_vars *vars)
+static void	ft_init(t_vars *vars, char *title)
 {
 	vars->viewport_info->r_max = 2.0;
 	vars->viewport_info->r_min = -2.0;
 	vars->viewport_info->i_max = 2.0;
 	vars->viewport_info->i_min = -2.0;
 	vars->mlx_info->mlx = mlx_init();
-	vars->mlx_info->win = mlx_new_window(vars->mlx_info->mlx, WIDTH, HEIGHT, "rkitao");
+	vars->mlx_info->win = mlx_new_window(vars->mlx_info->mlx, WIDTH, HEIGHT, title);
 	vars->mlx_info->img = mlx_new_image(vars->mlx_info->mlx, WIDTH, HEIGHT);
 	vars->mlx_info->data_addr = mlx_get_data_addr(vars->mlx_info->img,
 		&(vars->mlx_info->bpp), &(vars->mlx_info->size_line),
@@ -55,6 +55,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
+	double r,i;
 
 	t_vars	vars;
 	t_mlx	mlx;
@@ -62,8 +63,18 @@ int	main(int argc, char **argv)
 	
 	vars.mlx_info = &mlx;
 	vars.viewport_info = &viewport;
-	ft_init(&vars);
-	ft_mandelbrot(&mlx, &viewport);
+	if (ft_arg(argc, argv, &r, &i) == 0)
+	{
+		//マンデルブロ集合
+		ft_init(&vars, "Mandelbrot");
+		ft_mandelbrot(&mlx, &viewport);
+	}
+	else if (ft_arg(argc, argv, &r, &i) == 1)
+	{
+		//ジュリア集合
+		printf("julia %f %f\n", r, i);
+		return (0);
+	}
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
 	mlx_mouse_hook(mlx.win, ft_zoom, &vars);
 	mlx_key_hook(mlx.win, key_hook, &mlx);

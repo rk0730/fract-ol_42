@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/08/24 00:42:58 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/04 19:34:31 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ enum e_keycode
 };
 
 void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport);
-int	ft_zoom(int event, int x, int y, t_vars *vars);
+int		ft_zoom(int event, int x, int y, t_vars *vars);
+int		ft_arg(int argc, char **argv, double *r, double *i);
 
 # endif
