@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_zoom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:23:21 by rkitao            #+#    #+#             */
-/*   Updated: 2024/06/23 15:02:46 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/04 18:54:47 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_coordinate(int event, int x, int y, t_viewport *port)
 int	ft_zoom(int event, int x, int y, t_vars *vars)
 {
 	t_mlx		*mlx;
-	// t_viewport	*viewport;
 
 	mlx = vars->mlx_info;
 	if (!(event == SCROLL_UP || event == SCROLL_DOWN))
