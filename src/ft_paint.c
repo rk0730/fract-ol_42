@@ -37,8 +37,9 @@ void	ft_paint(t_vars vars)
 			t_complex_num z;
 			t_viewport	*viewport = vars.viewport_info;
 
+			// (0,0)が左上なので、yの値を逆にする
 			z.r = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
-			z.i = viewport->i_min + (y * (viewport->i_max - viewport->i_min) / HEIGHT);
+			z.i = viewport->i_max - (y * (viewport->i_max - viewport->i_min) / HEIGHT);
 			int iter;
 			if (vars.frac_type->name == 'm')
 				iter = ft_mandelbrot(z);

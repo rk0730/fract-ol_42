@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/12 20:02:47 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 02:17:24 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ int	key_hook(enum e_keycode keycode, t_vars *vars)
 	}
 	if (keycode == KEY_UP){
 		double diff = (vars->viewport_info->i_max - vars->viewport_info->i_min)/15;
-		vars->viewport_info->i_max -= diff;
-		vars->viewport_info->i_min -= diff;
+		vars->viewport_info->i_max += diff;
+		vars->viewport_info->i_min += diff;
 	}else if (keycode == KEY_DOWN){
 		double diff = (vars->viewport_info->i_max - vars->viewport_info->i_min)/15;
-        vars->viewport_info->i_max += diff;
-        vars->viewport_info->i_min += diff;
+        vars->viewport_info->i_max -= diff;
+        vars->viewport_info->i_min -= diff;
     }else if (keycode == KEY_LEFT){
-		double diff = (vars->viewport_info->r_max - vars->viewport_info->r_min)/15;
-		vars->viewport_info->r_max += diff;
-		vars->viewport_info->r_min += diff;
-	}else if (keycode == KEY_RIGHT){
 		double diff = (vars->viewport_info->r_max - vars->viewport_info->r_min)/15;
 		vars->viewport_info->r_max -= diff;
 		vars->viewport_info->r_min -= diff;
+	}else if (keycode == KEY_RIGHT){
+		double diff = (vars->viewport_info->r_max - vars->viewport_info->r_min)/15;
+		vars->viewport_info->r_max += diff;
+		vars->viewport_info->r_min += diff;
 	}
 	if (keycode == KEY_SPACE){
 		vars->frac_type->base_color += 0.02;
