@@ -23,9 +23,10 @@ FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a
 
 SRCDIR = src
 SRCS = $(SRCDIR)/ft_main.c \
-	$(SRCDIR)/ft_mandelbrot.c \
+	$(SRCDIR)/ft_paint.c \
 	$(SRCDIR)/ft_zoom.c \
 	$(SRCDIR)/ft_arg.c \
+	$(SRCDIR)/ft_fractol.c \
 
 # SRCS = $(SRCDIR)/gpt.c
 

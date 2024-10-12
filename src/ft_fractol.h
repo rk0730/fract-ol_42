@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fractol.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/04 19:34:31 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/12 17:12:15 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@
 
 # define WIDTH 400
 # define HEIGHT 300
+
+typedef struct s_complex_num
+{
+	double    r;
+    double    i;
+}	t_complex_num;
+
 
 typedef struct s_mlx
 {
@@ -42,10 +49,18 @@ typedef struct s_viewport
 	double	i_min;
 }	t_viewport;
 
+
+typedef struct s_frac_type
+{
+	char	name;
+	t_complex_num *complex;
+}	t_frac_type;
+
 typedef struct s_vars
 {
 	t_mlx		*mlx_info;
 	t_viewport	*viewport_info;
+	t_frac_type	*frac_type;
 }	t_vars;
 
 enum e_event
@@ -77,7 +92,9 @@ enum e_keycode
 	KEY_ESC = 53
 };
 
-void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport);
+void	ft_paint(t_vars vars);
+int		ft_mandelbrot(t_complex_num c);
+int		ft_julia(t_complex_num z, t_complex_num c);
 int		ft_zoom(int event, int x, int y, t_vars *vars);
 int		ft_arg(int argc, char **argv, double *r, double *i);
 

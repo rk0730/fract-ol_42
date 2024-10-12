@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/12 15:59:59 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/12 17:18:34 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,31 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	double r,i;
 
 	t_vars	vars;
 	t_mlx	mlx;
 	t_viewport	viewport;
-	
+	t_frac_type	frac_type;
+	t_complex_num complex_num;
+
 	vars.mlx_info = &mlx;
 	vars.viewport_info = &viewport;
-	if (ft_arg(argc, argv, &r, &i) == 0)
+	vars.frac_type = &frac_type;
+	frac_type.complex = &complex_num;
+	if (ft_arg(argc, argv, &(complex_num.r), &(complex_num.i)) == 0)
 	{
 		//マンデルブロ集合
+		frac_type.name = 'm';
 		ft_init(&vars, "Mandelbrot");
-		ft_mandelbrot(&mlx, &viewport);
+		ft_paint(vars);
 	}
-	else if (ft_arg(argc, argv, &r, &i) == 1)
+	else if (ft_arg(argc, argv, &(complex_num.r), &(complex_num.i)) == 1)
 	{
 		//ジュリア集合
-		printf("julia %f %f\n", r, i);
-		return (0);
+		frac_type.name = 'j';
+		ft_init(&vars, "Julia");
+		ft_paint(vars);
+		// ft_julia(&mlx, t_viewport *viewport, double r, double i);
 	}
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
 	mlx_mouse_hook(mlx.win, ft_zoom, &vars);
@@ -81,4 +87,3 @@ int	main(int argc, char **argv)
 	mlx_loop(mlx.mlx);
 	return (0);
 }
-

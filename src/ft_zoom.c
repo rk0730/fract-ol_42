@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_zoom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:23:21 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/04 18:54:47 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/12 17:10:33 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_zoom(int event, int x, int y, t_vars *vars)
 	if (!(event == SCROLL_UP || event == SCROLL_DOWN))
 		return (0);
 	ft_coordinate(event, x, y, vars->viewport_info);
-	ft_mandelbrot(mlx, vars->viewport_info);
+	ft_paint(*vars);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	return (0);
 }

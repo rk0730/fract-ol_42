@@ -28,39 +28,27 @@ static void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
 	*b = (b_prime + m) * 255;
 }
 
-static int	mandelbrot(double real, double imag)
-{
-	int		max_iter;
-	double	zr, zi;
-	int		iter;
-	double	tmp;
 
-	max_iter = 1000;
-	zr = 0.0;
-	zi = 0.0;
-	iter = 0;
-	while (zr * zr + zi * zi < 4.0 && iter < max_iter)
-	{
-		tmp = zr * zr - zi * zi + real;
-		zi = 2.0 * zr * zi + imag;
-		zr = tmp;
-		iter++;
-	}
-	return (iter);
-}
 
-void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport)
+void	ft_paint(t_vars vars)
 {
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			double real = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
-			double imag = viewport->i_min + (y * (viewport->i_max - viewport->i_min) / HEIGHT);
-			int iter = mandelbrot(real, imag);
-			//デバッグ用
-			if (x % 40 == 0 && y % 30 == 0) {
-				// printf("x: %d, y: %d, iter: %d\n", x, y, iter);
-			}
+			t_complex_num z;
+			t_viewport	*viewport = vars.viewport_info;
 
+			z.r = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
+			z.i = viewport->i_min + (y * (viewport->i_max - viewport->i_min) / HEIGHT);
+			int iter;
+			if (vars.frac_type->name == 'm')
+				iter = ft_mandelbrot(z);
+			else if (vars.frac_type->name == 'j')
+				iter = ft_julia(z, *(vars.frac_type->complex));
+			else
+			{
+				printf("Invalid fraction type\n");
+				return ;
+			}
 			// HSV to RGB
 			float s = 1;
 			float v = 1;
@@ -68,8 +56,8 @@ void	ft_mandelbrot(t_mlx *mlx, t_viewport *viewport)
 			int r, g, b;
 			hsv_to_rgb(h, s, v, &r, &g, &b);
 			int color = (r << 16) | (g << 8) | b;
-			int pos = (y * mlx->size_line) + (x * (mlx->bpp / 8));
-			*(unsigned int *)(mlx->data_addr + pos) = color;
+			int pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));
+			*(unsigned int *)(vars.mlx_info->data_addr + pos) = color;
 		}
 	}
 }
