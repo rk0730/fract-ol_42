@@ -46,7 +46,7 @@ void	ft_paint(t_vars vars)
 				iter = ft_julia(z, *(vars.frac_type->complex));
 			else
 			{
-				printf("Invalid fraction type\n");
+				ft_printf("Invalid fraction type\n");
 				return ;
 			}
 			// HSV to RGB

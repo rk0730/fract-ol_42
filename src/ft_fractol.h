@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/12 17:12:15 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/12 19:11:20 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,15 @@ enum e_mouse_event
 
 enum e_keycode
 {
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_W = 13,
-	KEY_ESC = 53
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 100,
+	KEY_W = 119,
+	KEY_LEFT = 65361,
+	KEY_UP = 65362,
+	KEY_RIGHT = 65363,
+	KEY_DOWN = 65364,
+	KEY_ESC = 65307
 };
 
 void	ft_paint(t_vars vars);
