@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/12 19:11:20 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/12 19:59:49 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_frac_type
 {
 	char	name;
 	t_complex_num *complex;
+	double base_color;
 }	t_frac_type;
 
 typedef struct s_vars
@@ -85,6 +86,7 @@ enum e_mouse_event
 
 enum e_keycode
 {
+	KEY_SPACE = 32,
 	KEY_A = 97,
 	KEY_S = 115,
 	KEY_D = 100,

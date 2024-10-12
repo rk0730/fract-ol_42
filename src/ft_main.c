@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/12 19:21:36 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/12 20:02:47 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int	key_hook(enum e_keycode keycode, t_vars *vars)
 		double diff = (vars->viewport_info->r_max - vars->viewport_info->r_min)/15;
 		vars->viewport_info->r_max -= diff;
 		vars->viewport_info->r_min -= diff;
+	}
+	if (keycode == KEY_SPACE){
+		vars->frac_type->base_color += 0.02;
+		if (vars->frac_type->base_color > 1.0)
+			vars->frac_type->base_color -= 1.0;
 	}
 	ft_paint(*vars);
 	mlx_put_image_to_window(vars->mlx_info->mlx, vars->mlx_info->win, vars->mlx_info->img, 0, 0);
@@ -78,6 +83,7 @@ int	main(int argc, char **argv)
 	vars.mlx_info = &mlx;
 	vars.viewport_info = &viewport;
 	vars.frac_type = &frac_type;
+	frac_type.base_color = 0.66;
 	frac_type.complex = &complex_num;
 	if (ft_arg(argc, argv, &(complex_num.r), &(complex_num.i)) == 0)
 	{

@@ -49,12 +49,20 @@ void	ft_paint(t_vars vars)
 				ft_printf("Invalid fraction type\n");
 				return ;
 			}
-			// HSV to RGB
-			float s = 1;
-			float v = 1;
-			float h = iter / 1000.0 + 0.66; //0.66がないと赤くなり見にくい
+
 			int r, g, b;
-			hsv_to_rgb(h, s, v, &r, &g, &b);
+			// 収束した場合は黒
+			if (iter == 1000){
+				r = 20;
+				g = 20;
+				b = 20;
+			}else{
+				// HSV to RGB
+				float s = 1;
+				float v = 1;
+				float h = iter / 1000.0 + vars.frac_type->base_color; //base_color(0.66)がないと赤くなり見にくい
+				hsv_to_rgb(h, s, v, &r, &g, &b);
+			}
 			int color = (r << 16) | (g << 8) | b;
 			int pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));
 			*(unsigned int *)(vars.mlx_info->data_addr + pos) = color;
