@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/04 19:34:25 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/12 15:59:59 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,4 @@ int	main(int argc, char **argv)
 	mlx_loop(mlx.mlx);
 	return (0);
 }
+
