@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 19:22:30 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/04 19:30:32 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/13 14:45:00 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,13 @@ int	ft_arg(int argc, char **argv, double *r, double *i)
 {
 	if (argc < 2)
 	{
-		ft_printf("Usage: ./fractol [m/j (double)x (double)y]\n");
+		ft_printf("Usage: ./fractol [m/j (double)x (double)y/s]\n");
 		exit(1);
 	}
 	if (argv[1][0] == 'm')
 		return (0);
+	if (argv[1][0] == 's')
+		return (2);
 	if (argv[1][0] == 'j')
 	{
 		if (argc < 4)

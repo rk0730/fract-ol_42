@@ -27,8 +27,9 @@ SRCS = $(SRCDIR)/ft_main.c \
 	$(SRCDIR)/ft_zoom.c \
 	$(SRCDIR)/ft_arg.c \
 	$(SRCDIR)/ft_fractol.c \
+	$(SRCDIR)/ft_sierpinski.c \
+	$(SRCDIR)/ft_hook.c \
 
-# SRCS = $(SRCDIR)/gpt.c
 
 OBJDIR = obj
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
@@ -42,11 +43,11 @@ all: $(NAME)
 $(NAME): $(OBJS) $(MINILIBX) $(LIBFT) $(FTPRINTF)
 # macOS用の設定
 ifeq ($(UNAME_S), Darwin)
-	$(CC) $(INCLUDES) -framework OpenGL -framework AppKit -o $@ $^
+	$(CC) $(INCLUDES) -framework OpenGL -framework AppKit -lm -o $@ $^
 endif
 # Ubuntu用の設定
 ifeq ($(UNAME_S), Linux)
-	$(CC) $(INCLUDES) -o $@ $^ -lX11 -lXext
+	$(CC) $(INCLUDES) -o $@ $^ -lX11 -lXext -lm
 endif
 
 $(MINILIBX):

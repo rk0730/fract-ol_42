@@ -3,7 +3,7 @@
 
 // マンデルブロ集合の描画
 
-static void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
+void ft_hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
 	float c = v * s;
 	float x = c * (1 - abs((int)(h * 6) % 2 - 1));
 	float m = v - c;
@@ -32,6 +32,11 @@ static void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
 
 void	ft_paint(t_vars vars)
 {
+	if (vars.frac_type->name == 's')
+	{
+		ft_sierpinski(vars);
+		return ;
+	}
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
 			t_complex_num z;
@@ -62,7 +67,7 @@ void	ft_paint(t_vars vars)
 				float s = 1;
 				float v = 1;
 				float h = iter / 1000.0 + vars.frac_type->base_color; //base_color(0.66)がないと赤くなり見にくい
-				hsv_to_rgb(h, s, v, &r, &g, &b);
+				ft_hsv_to_rgb(h, s, v, &r, &g, &b);
 			}
 			int color = (r << 16) | (g << 8) | b;
 			int pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));

@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/12 19:59:49 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 17:33:57 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-# define WIDTH 400
-# define HEIGHT 300
+# define WIDTH 500
+# define HEIGHT 500
+
+# define M_PI 3.14159265358979323846
 
 typedef struct s_complex_num
 {
@@ -98,10 +100,14 @@ enum e_keycode
 	KEY_ESC = 65307
 };
 
+void	ft_sierpinski(t_vars vars);
 void	ft_paint(t_vars vars);
 int		ft_mandelbrot(t_complex_num c);
 int		ft_julia(t_complex_num z, t_complex_num c);
 int		ft_zoom(int event, int x, int y, t_vars *vars);
 int		ft_arg(int argc, char **argv, double *r, double *i);
+void	ft_hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b);
+int		ft_key_hook(enum e_keycode keycode, t_vars *vars);
+int		ft_close(t_mlx *mlx);
 
 # endif
