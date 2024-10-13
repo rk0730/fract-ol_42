@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sierpinski.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:16:04 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/13 17:12:57 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 18:20:39 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,59 +126,32 @@ void draw_triangle(t_vars vars, double center_r, double center_i, double size)
 void	ft_sierpinski(t_vars vars)
 {
 	// 全マスを黒で塗りつぶす
-	for (int y=0;y<HEIGHT;y++){
-		for (int x=0;x<WIDTH;x++){
+	int x;
+	int y;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
 			int pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));
 			*(unsigned int *)(vars.mlx_info->data_addr + pos) = (20 << 16) | (20 << 8) | 20;
+			x++;
 		}
+		y++;
 	}
+
+
+	
+	// for (int y=0;y<HEIGHT;y++){
+	// 	for (int x=0;x<WIDTH;x++){
+	// 		int pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));
+	// 		*(unsigned int *)(vars.mlx_info->data_addr + pos) = (20 << 16) | (20 << 8) | 20;
+	// 	}
+	// }
 
 	// 正三角形を描画
 	draw_triangle(vars, 0, 0, 2);
 	draw_down_triangle(vars, 0, 0, 1);
-	// int color = (r << 16) | (g << 8) | b;
-	// int pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));
-	// *(unsigned int *)(vars.mlx_info->data_addr + pos) = color;
 }
-
-
-// void	ft_paint(t_vars vars)
-// {
-// 	for (int y = 0; y < HEIGHT; y++) {
-// 		for (int x = 0; x < WIDTH; x++) {
-// 			t_complex_num z;
-// 			t_viewport	*viewport = vars.viewport_info;
-
-// 			// (0,0)が左上なので、yの値を逆にする
-// 			z.r = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
-// 			z.i = viewport->i_max - (y * (viewport->i_max - viewport->i_min) / HEIGHT);
-// 			int iter;
-// 			if (vars.frac_type->name == 'm')
-// 				iter = ft_mandelbrot(z);
-// 			else if (vars.frac_type->name == 'j')
-// 				iter = ft_julia(z, *(vars.frac_type->complex));
-// 			else
-// 			{
-// 				ft_printf("Invalid fraction type\n");
-// 				return ;
-// 			}
-
-// 			int r, g, b;
-// 			// 収束した場合は黒
-// 			if (iter == 1000){
-// 				r = 20;
-// 				g = 20;
-// 				b = 20;
-// 			}else{
-// 				// HSV to RGB
-// 				float s = 1;
-// 				float v = 1;
-// 				float h = iter / 1000.0 + vars.frac_type->base_color; //base_color(0.66)がないと赤くなり見にくい
-// 				hsv_to_rgb(h, s, v, &r, &g, &b);
-// 			}
-// 			int color = (r << 16) | (g << 8) | b;
-// 			int pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));
-// 			*(unsigned int *)(vars.mlx_info->data_addr + pos) = color;
-// 		}
-// 	}
-// }

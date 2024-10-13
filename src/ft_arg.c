@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 19:22:30 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/13 17:47:30 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 19:00:42 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-double ft_atof(const char *str)
+double ft_atof(char *str)
 {
 	double result = 0.0;
 	double fraction = 0.0;
@@ -23,11 +23,10 @@ double ft_atof(const char *str)
 	int sign = 1;
 	int fraction_flag = 0;
 
-	//これなくても大丈夫な気がする
 	// 先頭の空白文字を無視
-	// while (isspace(*str)) {
-	// 	str++;
-	// }
+	while (*str == ' ' || (9 <= *str && *str <= 13)) {
+		str++;
+	}
 
 	// 符号のチェック（-１回のみ認める）
 	if (*str == '-')
@@ -35,12 +34,17 @@ double ft_atof(const char *str)
 		sign = -1;
 		str++;
 	}
+	char *point = str;
 	// 整数部分の処理
 	while (ft_isdigit(*str))
 	{
 		result = result * 10.0 + (*str - '0');
 		str++;
 	}
+
+	//整数部分が0桁なら終わり
+	if (str == point)
+		return (NAN);
 
 	// 小数点の処理
 	if (*str == '.')
@@ -52,12 +56,16 @@ double ft_atof(const char *str)
 	// 小数部分の処理
 	if (fraction_flag)
 	{
+		point = str;
 		while (isdigit(*str))
 		{
 			fraction = fraction * 10.0 + (*str - '0');
 			divisor *= 10.0;
 			str++;
 		}
+		// 小数部分が0桁なら終わり
+		if (str == point)
+			return (NAN);
 	}
 
 	// 最終的な結果
@@ -90,6 +98,11 @@ int	ft_arg(int argc, char **argv, t_complex_num *complex_num)
 		}
 		complex_num->r = ft_atof(argv[2]);
 		complex_num->i = ft_atof(argv[3]);
+		if (isnan(complex_num->r) || isnan(complex_num->i))
+		{
+			ft_printf("Invalid argument\n");
+			exit(1);
+		}
 		return (1);
 	}
 	exit(1);

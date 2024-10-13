@@ -29,6 +29,7 @@ SRCS = $(SRCDIR)/ft_main.c \
 	$(SRCDIR)/ft_fractol.c \
 	$(SRCDIR)/ft_sierpinski.c \
 	$(SRCDIR)/ft_hook.c \
+	$(SRCDIR)/ft_hsv_to_rgb.c \
 
 
 OBJDIR = obj

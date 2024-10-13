@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fractol.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/13 17:46:33 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 18:32:16 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_frac_type
 typedef struct s_vars
 {
 	t_mlx_info	*mlx_info;
-	t_viewport	*viewport_info;
+	t_viewport	*viewport;
 	t_frac_type	*frac_type;
 }	t_vars;
 
