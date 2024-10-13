@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 19:22:30 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/13 14:45:00 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 17:47:30 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include <stdio.h>
 #include <ctype.h>
 
-double ft_atof(const char *str) {
+double ft_atof(const char *str)
+{
 	double result = 0.0;
 	double fraction = 0.0;
 	double divisor = 1.0;
@@ -29,25 +30,30 @@ double ft_atof(const char *str) {
 	// }
 
 	// 符号のチェック（-１回のみ認める）
-	if (*str == '-') {
+	if (*str == '-')
+	{
 		sign = -1;
 		str++;
 	}
 	// 整数部分の処理
-	while (ft_isdigit(*str)) {
+	while (ft_isdigit(*str))
+	{
 		result = result * 10.0 + (*str - '0');
 		str++;
 	}
 
 	// 小数点の処理
-	if (*str == '.') {
+	if (*str == '.')
+	{
 		str++;
 		fraction_flag = 1;
 	}
 
 	// 小数部分の処理
-	if (fraction_flag) {
-		while (isdigit(*str)) {
+	if (fraction_flag)
+	{
+		while (isdigit(*str))
+		{
 			fraction = fraction * 10.0 + (*str - '0');
 			divisor *= 10.0;
 			str++;
@@ -64,7 +70,7 @@ double ft_atof(const char *str) {
 //エラー　-1を返す
 // 2つ目の引数がmで始まる→マンデルブロ集合
 // 2つ目の引数がjで始まる→ジュリア集合　3つ目と4つ目の引数が必要
-int	ft_arg(int argc, char **argv, double *r, double *i)
+int	ft_arg(int argc, char **argv, t_complex_num *complex_num)
 {
 	if (argc < 2)
 	{
@@ -82,8 +88,8 @@ int	ft_arg(int argc, char **argv, double *r, double *i)
 			ft_printf("Usage: ./fractol [m/j (double)x (double)y]\n");
 			exit(1);
 		}
-		*r = ft_atof(argv[2]);
-		*i = ft_atof(argv[3]);
+		complex_num->r = ft_atof(argv[2]);
+		complex_num->i = ft_atof(argv[3]);
 		return (1);
 	}
 	exit(1);

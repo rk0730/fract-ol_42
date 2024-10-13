@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/13 17:33:57 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 17:46:33 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 
 typedef struct s_complex_num
 {
-	double    r;
-    double    i;
+	double	r;
+	double	i;
 }	t_complex_num;
 
 
-typedef struct s_mlx
+typedef struct s_mlx_info
 {
 	void	*mlx;
 	void	*win;
@@ -41,7 +41,7 @@ typedef struct s_mlx
 	int		bpp;
 	int		size_line;
 	int		endian;
-}	t_mlx;
+}	t_mlx_info;
 
 typedef struct s_viewport
 {
@@ -54,14 +54,14 @@ typedef struct s_viewport
 
 typedef struct s_frac_type
 {
-	char	name;
-	t_complex_num *complex;
-	double base_color;
+	char			name;
+	t_complex_num	*complex;
+	double			base_color;
 }	t_frac_type;
 
 typedef struct s_vars
 {
-	t_mlx		*mlx_info;
+	t_mlx_info	*mlx_info;
 	t_viewport	*viewport_info;
 	t_frac_type	*frac_type;
 }	t_vars;
@@ -105,9 +105,9 @@ void	ft_paint(t_vars vars);
 int		ft_mandelbrot(t_complex_num c);
 int		ft_julia(t_complex_num z, t_complex_num c);
 int		ft_zoom(int event, int x, int y, t_vars *vars);
-int		ft_arg(int argc, char **argv, double *r, double *i);
+int		ft_arg(int argc, char **argv, t_complex_num *complex_num);
 void	ft_hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b);
 int		ft_key_hook(enum e_keycode keycode, t_vars *vars);
-int		ft_close(t_mlx *mlx);
+int		ft_close(t_mlx_info *mlx_info);
 
 # endif

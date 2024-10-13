@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:32:40 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/13 17:34:36 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/13 17:42:11 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	ft_key_hook(enum e_keycode keycode, t_vars *vars)
 	return (0);
 }
 
-int	ft_close(t_mlx *mlx)
+int	ft_close(t_mlx_info *mlx_info)
 {
 	ft_printf("close\n");
-	mlx_destroy_display(mlx->mlx);
+	mlx_destroy_display(mlx_info->mlx);
 	exit(0);
 	return (0);
 }
