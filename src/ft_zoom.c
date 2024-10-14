@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:23:21 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/13 18:22:36 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/13 23:36:37 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_zoom(int event, int x, int y, t_vars *vars)
 	mlx_info = vars->mlx_info;
 	if (!(event == SCROLL_UP || event == SCROLL_DOWN))
 		return (0);
-	ft_coordinate(event, x, y, vars->viewport_info);
+	ft_coordinate(event, x, y, vars->viewport);
 	ft_paint(*vars);
 	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
 	return (0);
