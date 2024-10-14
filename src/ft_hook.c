@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:32:40 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/13 17:42:11 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/14 13:42:35 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ int	ft_key_hook(enum e_keycode keycode, t_vars *vars)
 		exit(0);
 	}
 	if (keycode == KEY_UP){
-		double diff = (vars->viewport_info->i_max - vars->viewport_info->i_min)/15;
-		vars->viewport_info->i_max += diff;
-		vars->viewport_info->i_min += diff;
+		double diff = (vars->viewport->i_max - vars->viewport->i_min)/15;
+		vars->viewport->i_max += diff;
+		vars->viewport->i_min += diff;
 	}else if (keycode == KEY_DOWN){
-		double diff = (vars->viewport_info->i_max - vars->viewport_info->i_min)/15;
-		vars->viewport_info->i_max -= diff;
-		vars->viewport_info->i_min -= diff;
+		double diff = (vars->viewport->i_max - vars->viewport->i_min)/15;
+		vars->viewport->i_max -= diff;
+		vars->viewport->i_min -= diff;
 	}else if (keycode == KEY_LEFT){
-		double diff = (vars->viewport_info->r_max - vars->viewport_info->r_min)/15;
-		vars->viewport_info->r_max -= diff;
-		vars->viewport_info->r_min -= diff;
+		double diff = (vars->viewport->r_max - vars->viewport->r_min)/15;
+		vars->viewport->r_max -= diff;
+		vars->viewport->r_min -= diff;
 	}else if (keycode == KEY_RIGHT){
-		double diff = (vars->viewport_info->r_max - vars->viewport_info->r_min)/15;
-		vars->viewport_info->r_max += diff;
-		vars->viewport_info->r_min += diff;
+		double diff = (vars->viewport->r_max - vars->viewport->r_min)/15;
+		vars->viewport->r_max += diff;
+		vars->viewport->r_min += diff;
 	}
 	if (keycode == KEY_SPACE){
 		if (vars->frac_type->name == 's')

@@ -19,7 +19,7 @@ void	ft_paint(t_vars vars)
 		while (x < WIDTH)
 		{
 			t_complex_num z;
-			t_viewport	*viewport = vars.viewport_info;
+			t_viewport	*viewport = vars.viewport;
 
 			// (0,0)が左上なので、yの値を逆にする
 			z.r = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
