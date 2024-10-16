@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 19:22:30 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/16 15:52:49 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 18:34:17 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ static double	ft_atof(char *str)
 	return (result * sign);
 }
 
-
 static void	ft_arg_h(int argc, char **argv, t_complex_num *complex_num)
 {
 	if (argc < 4)
@@ -128,5 +127,6 @@ int	ft_arg(int argc, char **argv, t_complex_num *complex_num)
 		ft_arg_h(argc, argv, complex_num);
 		return (1);
 	}
+	ft_printf("Usage: ./fractol [m/j (double)x (double)y/s]\n");
 	exit(1);
 }

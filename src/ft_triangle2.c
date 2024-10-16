@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:09:45 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/16 18:00:10 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 18:30:49 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	ft_draw_down_triangle(t_vars vars, t_complex_num center, double size)
 	center_display.i = (vars.viewport->i_max + vars.viewport->i_min) / 2;
 	range.r = vars.viewport->r_max - vars.viewport->r_min;
 	range.i = vars.viewport->i_max - vars.viewport->i_min;
-	d = sqrt(pow(center.r - center_display.r, 2) +
-		pow(center.i - center_display.i, 2));
+	d = sqrt(pow(center.r - center_display.r, 2)
+			+ pow(center.i - center_display.i, 2));
 	// この下三角形が含まれる上三角形が範囲外なら終わりにする
 	if (d > sqrt(pow(range.r / 2, 2) + pow(range.i / 2, 2)) + 2 * size)
 		return ;

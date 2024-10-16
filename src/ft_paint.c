@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_paint.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/16 18:28:21 by kitaoryoma        #+#    #+#             */
+/*   Updated: 2024/10/16 18:31:14 by kitaoryoma       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_fractol.h"
 
 static void	ft_put_color(t_vars vars, int iter, int x, int y)
 {
-	long color;
+	long	color;
 	int		pos;
 	double	h;
 

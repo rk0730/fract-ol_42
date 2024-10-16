@@ -29,7 +29,7 @@ SRCS = $(SRCDIR)/ft_main.c \
 	$(SRCDIR)/ft_fractol.c \
 	$(SRCDIR)/ft_sierpinski.c \
 	$(SRCDIR)/ft_hook.c \
-	$(SRCDIR)/ft_hsv_to_rgb.c \
+	$(SRCDIR)/ft_hsv_to_color.c \
 	$(SRCDIR)/ft_triangle1.c \
 	$(SRCDIR)/ft_triangle2.c \
 

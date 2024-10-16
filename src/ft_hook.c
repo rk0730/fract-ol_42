@@ -6,38 +6,54 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:32:40 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/14 13:42:35 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 18:33:22 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
 
+static void	ft_key_hook_h1(enum e_keycode keycode, t_vars *vars)
+{
+	const double	diff = (vars->viewport->i_max - vars->viewport->i_min) / 15;
+
+	if (keycode == KEY_UP)
+	{
+		vars->viewport->i_max += diff;
+		vars->viewport->i_min += diff;
+	}
+	else if (keycode == KEY_DOWN)
+	{
+		vars->viewport->i_max -= diff;
+		vars->viewport->i_min -= diff;
+	}
+}
+
+static void	ft_key_hook_h2(enum e_keycode keycode, t_vars *vars)
+{
+	const double	diff = (vars->viewport->r_max - vars->viewport->r_min) / 15;
+
+	if (keycode == KEY_LEFT)
+	{
+		vars->viewport->r_max -= diff;
+		vars->viewport->r_min -= diff;
+	}
+	else if (keycode == KEY_RIGHT)
+	{
+		vars->viewport->r_max += diff;
+		vars->viewport->r_min += diff;
+	}
+}
+
 int	ft_key_hook(enum e_keycode keycode, t_vars *vars)
 {
-	printf("key_hook %d\n", keycode);
+	// printf("key_hook %d\n", keycode);
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_display(vars->mlx_info->mlx);
 		exit(0);
 	}
-	if (keycode == KEY_UP){
-		double diff = (vars->viewport->i_max - vars->viewport->i_min)/15;
-		vars->viewport->i_max += diff;
-		vars->viewport->i_min += diff;
-	}else if (keycode == KEY_DOWN){
-		double diff = (vars->viewport->i_max - vars->viewport->i_min)/15;
-		vars->viewport->i_max -= diff;
-		vars->viewport->i_min -= diff;
-	}else if (keycode == KEY_LEFT){
-		double diff = (vars->viewport->r_max - vars->viewport->r_min)/15;
-		vars->viewport->r_max -= diff;
-		vars->viewport->r_min -= diff;
-	}else if (keycode == KEY_RIGHT){
-		double diff = (vars->viewport->r_max - vars->viewport->r_min)/15;
-		vars->viewport->r_max += diff;
-		vars->viewport->r_min += diff;
-	}
-	if (keycode == KEY_SPACE){
+	if (keycode == KEY_SPACE)
+	{
 		if (vars->frac_type->name == 's')
 			vars->frac_type->base_color += 0.15;
 		else
@@ -45,14 +61,17 @@ int	ft_key_hook(enum e_keycode keycode, t_vars *vars)
 		if (vars->frac_type->base_color > 1.0)
 			vars->frac_type->base_color -= 1.0;
 	}
+	ft_key_hook_h1(keycode, vars);
+	ft_key_hook_h2(keycode, vars);
 	ft_paint(*vars);
-	mlx_put_image_to_window(vars->mlx_info->mlx, vars->mlx_info->win, vars->mlx_info->img, 0, 0);
+	mlx_put_image_to_window(vars->mlx_info->mlx, vars->mlx_info->win,
+		vars->mlx_info->img, 0, 0);
 	return (0);
 }
 
 int	ft_close(t_mlx_info *mlx_info)
 {
-	ft_printf("close\n");
+	// printf("close\n");
 	mlx_destroy_display(mlx_info->mlx);
 	exit(0);
 	return (0);

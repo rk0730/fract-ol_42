@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/13 18:41:36 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 18:31:37 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ static void	ft_init(t_vars *vars, char *title)
 	vars->viewport->i_max = 2.0;
 	vars->viewport->i_min = -2.0;
 	vars->mlx_info->mlx = mlx_init();
-	vars->mlx_info->win = mlx_new_window(vars->mlx_info->mlx, WIDTH, HEIGHT, title);
+	vars->mlx_info->win = mlx_new_window(vars->mlx_info->mlx,
+			WIDTH, HEIGHT, title);
 	vars->mlx_info->img = mlx_new_image(vars->mlx_info->mlx, WIDTH, HEIGHT);
 	vars->mlx_info->data_addr = mlx_get_data_addr(vars->mlx_info->img,
-		&(vars->mlx_info->bpp), &(vars->mlx_info->size_line),
-		&(vars->mlx_info->endian));
+			&(vars->mlx_info->bpp), &(vars->mlx_info->size_line),
+			&(vars->mlx_info->endian));
 }
 
 // コマンドライン引数に応じて初期化する

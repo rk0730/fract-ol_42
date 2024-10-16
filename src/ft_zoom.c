@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:23:21 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/16 15:54:21 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 18:32:58 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_coordinate(int event, int x, int y, t_viewport *port)
 	port->i_min = mouse_i - new_i_range * ratio;
 }
 
-
 int	ft_zoom(int event, int x, int y, t_vars *vars)
 {
 	t_mlx_info	*mlx_info;
@@ -48,10 +47,10 @@ int	ft_zoom(int event, int x, int y, t_vars *vars)
 	mlx_info = vars->mlx_info;
 	if (!(event == SCROLL_UP || event == SCROLL_DOWN))
 		return (0);
-	if (event == SCROLL_UP)
-		printf("Zoom in\n");
-	else
-		printf("Zoom out\n");
+	// if (event == SCROLL_UP)
+	// 	printf("Zoom in\n");
+	// else
+	// 	printf("Zoom out\n");
 	ft_coordinate(event, x, y, vars->viewport);
 	ft_paint(*vars);
 	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);

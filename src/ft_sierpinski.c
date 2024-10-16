@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:16:04 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/16 17:35:43 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 18:21:24 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	ft_draw_line(t_vars vars, t_point p1, t_point p2)
 
 void	ft_sierpinski(t_vars vars)
 {
-	int	x;
-	int	y;
-	int	pos;
-	const t_complex_num z0 = {0, 0};
+	int					x;
+	int					y;
+	int					pos;
+	const t_complex_num	z0 = {0, 0};
 
 	// 全マスを黒で塗りつぶす
 	y = 0;
