@@ -1,7 +1,7 @@
 
 #include "ft_fractol.h"
 
-void ft_hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b)
+long ft_hsv_to_color(float h, float s, float v)
 {
 	float c = v * s;
 	float x = c * (1 - abs((int)(h * 6) % 2 - 1));
@@ -45,7 +45,5 @@ void ft_hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b)
 		b_prime = x;
 	}
 
-	*r = (r_prime + m) * 255;
-	*g = (g_prime + m) * 255;
-	*b = (b_prime + m) * 255;
+	return ((long)((r_prime + m) * 255) << 16 | (long)((g_prime + m) * 255) << 8 | (long)((b_prime + m) * 255));
 }
