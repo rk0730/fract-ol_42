@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/16 16:35:57 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 17:36:45 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ typedef struct s_complex_num
 	double	i;
 }	t_complex_num;
 
-typedef struct s_two_point
+typedef struct s_point
 {
-	int x0;
-	int x1;
-	int y0;
-	int y1;
-}	t_two_point;
+	int x;
+	int y;
+}	t_point;
 
 typedef struct s_mlx_info
 {
@@ -116,9 +114,9 @@ int		ft_arg(int argc, char **argv, t_complex_num *complex_num);
 long ft_hsv_to_color(float h, float s, float v);
 int		ft_key_hook(enum e_keycode keycode, t_vars *vars);
 int		ft_close(t_mlx_info *mlx_info);
-void	draw_triangle(t_vars vars, double center_r, double center_i, double size);
-void	draw_down_triangle(t_vars vars, double center_r, double center_i, double size);
-void	draw_line(t_vars vars, int x0, int y0, int x1, int y1);
+void	ft_draw_triangle(t_vars vars, t_complex_num center, double size);
+void ft_draw_down_triangle(t_vars vars, t_complex_num center, double size);
+void	ft_draw_line(t_vars vars, t_point p1, t_point p2);
 
 
 # endif

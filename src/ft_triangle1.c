@@ -6,35 +6,38 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:09:45 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/16 16:09:55 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/16 17:52:45 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
 
 // 上向き正三角形を描画する関数
-void draw_triangle(t_vars vars, double center_r, double center_i, double size)
+void	ft_draw_triangle(t_vars vars, t_complex_num center, double size)
 {
-		
-	double r1 = center_r + size * cos(M_PI/2);
-	double i1 = center_i + size * sin(M_PI/2);
-		
-	double r2 = center_r + size * cos(7*M_PI/6);
-	double i2 = center_i + size * sin(7*M_PI/6);
-		
-	double r3 = center_r + size * cos(11*M_PI/6);
-	double i3 = center_i + size * sin(11*M_PI/6);
+	t_point			point[3];
+	t_complex_num	point_complex[3];
 
-	int x1 = (int)((r1-vars.viewport->r_min)/(vars.viewport->r_max-vars.viewport->r_min)*WIDTH);
-	int y1 = (int)((vars.viewport->i_max-i1)/(vars.viewport->i_max-vars.viewport->i_min)*HEIGHT);
-
-	int x2 = (int)((r2-vars.viewport->r_min)/(vars.viewport->r_max-vars.viewport->r_min)*WIDTH);
-	int y2 = (int)((vars.viewport->i_max-i2)/(vars.viewport->i_max-vars.viewport->i_min)*HEIGHT);
-
-	int x3 = (int)((r3-vars.viewport->r_min)/(vars.viewport->r_max-vars.viewport->r_min)*WIDTH);
-	int y3 = (int)((vars.viewport->i_max-i3)/(vars.viewport->i_max-vars.viewport->i_min)*HEIGHT);
+	point_complex[0].r = center.r + size * cos(M_PI / 2);
+	point_complex[0].i = center.i + size * sin(M_PI / 2);
+	point_complex[1].r = center.r + size * cos(7 * M_PI / 6);
+	point_complex[1].i = center.i + size * sin(7 * M_PI / 6);
+	point_complex[2].r = center.r + size * cos(11 * M_PI / 6);
+	point_complex[2].i = center.i + size * sin(11 * M_PI / 6);
+	point[0].x = (int)((point_complex[0].r - vars.viewport->r_min)
+			/ (vars.viewport->r_max - vars.viewport->r_min) * WIDTH);
+	point[0].y = (int)((vars.viewport->i_max - point_complex[0].i)
+			/ (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
+	point[1].x = (int)((point_complex[1].r - vars.viewport->r_min)
+			/ (vars.viewport->r_max - vars.viewport->r_min) * WIDTH);
+	point[1].y = (int)((vars.viewport->i_max - point_complex[1].i)
+			/ (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
+	point[2].x = (int)((point_complex[2].r - vars.viewport->r_min)
+			/ (vars.viewport->r_max - vars.viewport->r_min) * WIDTH);
+	point[2].y = (int)((vars.viewport->i_max - point_complex[2].i)
+			/ (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
 	// 3つの頂点を結ぶ
-	draw_line(vars, x1, y1, x2, y2);
-	draw_line(vars, x2, y2, x3, y3);
-	draw_line(vars, x3, y3, x1, y1);
+	ft_draw_line(vars, point[0], point[1]);
+	ft_draw_line(vars, point[1], point[2]);
+	ft_draw_line(vars, point[2], point[0]);
 }
