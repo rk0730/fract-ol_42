@@ -6,7 +6,7 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:28:21 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/16 18:31:14 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/22 23:59:59 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_put_color(t_vars vars, int iter, int x, int y)
 	*(unsigned int *)(vars.mlx_info->data_addr + pos) = color;
 }
 
-static int	ft__iter(t_vars vars, int x, int y)
+static int	ft_iter(t_vars vars, int x, int y)
 {
 	t_complex_num	z;
 	t_viewport		*viewport;
@@ -69,7 +69,7 @@ void	ft_paint(t_vars vars)
 		x = 0;
 		while (x < WIDTH)
 		{
-			iter = ft__iter(vars, x, y);
+			iter = ft_iter(vars, x, y);
 			if (iter == -1)
 				return ;
 			ft_put_color(vars, iter, x, y);
