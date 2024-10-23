@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_paint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:28:21 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 13:44:35 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 17:39:14by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_iter(t_vars vars, int x, int y)
 
 	viewport = vars.viewport;
 	z.r = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
-	z.i = viewport->i_max - (y * (viewport->i_max - viewport->i_min) / HEIGHT);
+	z.i = viewport->i_min + (y * (viewport->i_max - viewport->i_min) / HEIGHT);
 	if (vars.frac_type->name == 'm')
 		return (ft_mandelbrot(z));
 	else if (vars.frac_type->name == 'j')

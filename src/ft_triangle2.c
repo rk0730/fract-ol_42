@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_triangle2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:09:45 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 13:45:11 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 17:57:11 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static void	ft_init1(t_complex_num point_complex[3], t_complex_num center,
 		double size)
 {
 	point_complex[0].r = center.r + size * cos(M_PI / 6);
-	point_complex[0].i = center.i + size * sin(M_PI / 6);
+	point_complex[0].i = center.i - size * sin(M_PI / 6);
 	point_complex[1].r = center.r + size * cos(5 * M_PI / 6);
-	point_complex[1].i = center.i + size * sin(5 * M_PI / 6);
+	point_complex[1].i = center.i - size * sin(5 * M_PI / 6);
 	point_complex[2].r = center.r + size * cos(3 * M_PI / 2);
-	point_complex[2].i = center.i + size * sin(3 * M_PI / 2);
+	point_complex[2].i = center.i - size * sin(3 * M_PI / 2);
 }
 
 static void	ft_init2(t_point point[3], t_vars vars,
@@ -28,15 +28,21 @@ static void	ft_init2(t_point point[3], t_vars vars,
 {
 	point[0].x = (int)((point_complex[0].r - vars.viewport->r_min)
 			/ (vars.viewport->r_max - vars.viewport->r_min) * WIDTH);
-	point[0].y = (int)((vars.viewport->i_max - point_complex[0].i)
+	// point[0].y = (int)((vars.viewport->i_max - point_complex[0].i)
+			// / (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
+	point[0].y = (int)((point_complex[0].i - vars.viewport->i_min)
 			/ (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
 	point[1].x = (int)((point_complex[1].r - vars.viewport->r_min)
 			/ (vars.viewport->r_max - vars.viewport->r_min) * WIDTH);
-	point[1].y = (int)((vars.viewport->i_max - point_complex[1].i)
+	// point[1].y = (int)((vars.viewport->i_max - point_complex[1].i)
+			// / (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
+	point[1].y = (int)((point_complex[1].i - vars.viewport->i_min)
 			/ (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
 	point[2].x = (int)((point_complex[2].r - vars.viewport->r_min)
 			/ (vars.viewport->r_max - vars.viewport->r_min) * WIDTH);
-	point[2].y = (int)((vars.viewport->i_max - point_complex[2].i)
+	// point[2].y = (int)((vars.viewport->i_max - point_complex[2].i)
+			// / (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
+	point[2].y = (int)((point_complex[2].i - vars.viewport->i_min)
 			/ (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
 }
 
@@ -45,13 +51,13 @@ static void	ft_rec(t_vars vars, t_complex_num center, double size)
 	t_complex_num	new_center;
 
 	new_center.r = center.r + size * cos(M_PI / 2);
-	new_center.i = center.i + size * sin(M_PI / 2);
+	new_center.i = center.i - size * sin(M_PI / 2);
 	ft_draw_down_triangle(vars, new_center, size / 2);
 	new_center.r = center.r + size * cos(7 * M_PI / 6);
-	new_center.i = center.i + size * sin(7 * M_PI / 6);
+	new_center.i = center.i - size * sin(7 * M_PI / 6);
 	ft_draw_down_triangle(vars, new_center, size / 2);
 	new_center.r = center.r + size * cos(11 * M_PI / 6);
-	new_center.i = center.i + size * sin(11 * M_PI / 6);
+	new_center.i = center.i - size * sin(11 * M_PI / 6);
 	ft_draw_down_triangle(vars, new_center, size / 2);
 }
 

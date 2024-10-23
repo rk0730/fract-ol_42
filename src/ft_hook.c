@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:32:40 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/23 16:46:56 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 17:41:14 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	ft_key_hook_h1(enum e_keycode keycode, t_vars *vars)
 
 	if (keycode == KEY_UP)
 	{
-		vars->viewport->i_max += diff;
-		vars->viewport->i_min += diff;
+		vars->viewport->i_max -= diff;
+		vars->viewport->i_min -= diff;
 	}
 	else if (keycode == KEY_DOWN)
 	{
-		vars->viewport->i_max -= diff;
-		vars->viewport->i_min -= diff;
+		vars->viewport->i_max += diff;
+		vars->viewport->i_min += diff;
 	}
 }
 
