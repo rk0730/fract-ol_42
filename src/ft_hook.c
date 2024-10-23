@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:32:40 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/16 18:33:22 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:43:21 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	ft_key_hook_h2(enum e_keycode keycode, t_vars *vars)
 
 int	ft_key_hook(enum e_keycode keycode, t_vars *vars)
 {
-	// printf("key_hook %d\n", keycode);
 	if (keycode == KEY_ESC)
 	{
 		mlx_destroy_display(vars->mlx_info->mlx);
@@ -71,7 +70,6 @@ int	ft_key_hook(enum e_keycode keycode, t_vars *vars)
 
 int	ft_close(t_mlx_info *mlx_info)
 {
-	// printf("close\n");
 	mlx_destroy_display(mlx_info->mlx);
 	exit(0);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 19:22:30 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/16 18:34:17 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:42:56 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,21 @@ static double	ft_atof_h1(char **str_p, int *sign, double *result)
 {
 	char	*point;
 
-	// 先頭の空白文字を無視
 	while (**str_p == ' ' || (9 <= **str_p && **str_p <= 13))
 	{
 		(*str_p)++;
 	}
-	// 符号のチェック（-１回のみ認める）
 	if (**str_p == '-')
 	{
 		*sign = -1;
 		(*str_p)++;
 	}
-	// 整数部分の最初
 	point = *str_p;
-	// 整数部分の処理
 	while (ft_isdigit(**str_p))
 	{
 		*result = *result * 10.0 + (**str_p - '0');
 		(*str_p)++;
 	}
-	//整数部分が0桁なら終わり
 	if (*str_p == point)
 		return (NAN);
 	return (0);
@@ -49,13 +44,11 @@ static double	ft_atof_h2(char **str_p, double *fraction, double *divisor)
 	char	*point;
 
 	fraction_flag = 0;
-	// 小数点の処理
 	if (**str_p == '.')
 	{
 		(*str_p)++;
 		fraction_flag = 1;
 	}
-	// 小数部分の処理
 	if (fraction_flag)
 	{
 		point = (*str_p);
@@ -65,7 +58,6 @@ static double	ft_atof_h2(char **str_p, double *fraction, double *divisor)
 			*divisor *= 10.0;
 			(*str_p)++;
 		}
-		// 小数部分が0桁なら終わり
 		if (*str_p == point)
 			return (NAN);
 	}
@@ -87,7 +79,6 @@ static double	ft_atof(char *str)
 		return (NAN);
 	if (isnan(ft_atof_h2(&str, &fraction, &divisor)))
 		return (NAN);
-	// 最終的な結果
 	result += fraction / divisor;
 	return (result * sign);
 }
@@ -108,9 +99,6 @@ static void	ft_arg_h(int argc, char **argv, t_complex_num *complex_num)
 	}
 }
 
-//エラー　-1を返す
-// 2つ目の引数がmで始まる→マンデルブロ集合
-// 2つ目の引数がjで始まる→ジュリア集合　3つ目と4つ目の引数が必要
 int	ft_arg(int argc, char **argv, t_complex_num *complex_num)
 {
 	if (argc < 2)

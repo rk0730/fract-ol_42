@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sierpinski.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:16:04 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/16 18:21:24 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:44:51 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	ft_draw_line_h(t_vars vars, t_point p1, const long color)
 	}
 }
 
-// 2点間の直線を描画する関数
 void	ft_draw_line(t_vars vars, t_point p1, t_point p2)
 {
 	const t_point	dx_dy = {abs(p2.x - p1.x), abs(p2.y - p1.y)};
@@ -73,7 +72,6 @@ void	ft_sierpinski(t_vars vars)
 	int					pos;
 	const t_complex_num	z0 = {0, 0};
 
-	// 全マスを黒で塗りつぶす
 	y = 0;
 	while (y < HEIGHT)
 	{
@@ -88,7 +86,6 @@ void	ft_sierpinski(t_vars vars)
 		}
 		y++;
 	}
-	// 正三角形を描画
 	ft_draw_triangle(vars, z0, 2);
 	ft_draw_down_triangle(vars, z0, 1);
 }

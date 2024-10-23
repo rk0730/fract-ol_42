@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_triangle2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:09:45 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/16 18:30:49 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:45:11 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	ft_rec(t_vars vars, t_complex_num center, double size)
 {
 	t_complex_num	new_center;
 
-	// 再帰
 	new_center.r = center.r + size * cos(M_PI / 2);
 	new_center.i = center.i + size * sin(M_PI / 2);
 	ft_draw_down_triangle(vars, new_center, size / 2);
@@ -56,7 +55,6 @@ static void	ft_rec(t_vars vars, t_complex_num center, double size)
 	ft_draw_down_triangle(vars, new_center, size / 2);
 }
 
-// 下向き正三角形をたくさん描画する関数
 void	ft_draw_down_triangle(t_vars vars, t_complex_num center, double size)
 {
 	t_point			point[3];
@@ -67,7 +65,6 @@ void	ft_draw_down_triangle(t_vars vars, t_complex_num center, double size)
 
 	ft_init1(point_complex, center, size);
 	ft_init2(point, vars, point_complex);
-	// 一辺が3ピクセル以内になったら描画をやめる
 	if (pow(point[0].x - point[1].x, 2) + pow(point[0].y - point[1].y, 2) <= 9)
 		return ;
 	center_display.r = (vars.viewport->r_max + vars.viewport->r_min) / 2;
@@ -76,13 +73,10 @@ void	ft_draw_down_triangle(t_vars vars, t_complex_num center, double size)
 	range.i = vars.viewport->i_max - vars.viewport->i_min;
 	d = sqrt(pow(center.r - center_display.r, 2)
 			+ pow(center.i - center_display.i, 2));
-	// この下三角形が含まれる上三角形が範囲外なら終わりにする
 	if (d > sqrt(pow(range.r / 2, 2) + pow(range.i / 2, 2)) + 2 * size)
 		return ;
-	// 3つの頂点を結ぶ
 	ft_draw_line(vars, point[0], point[1]);
 	ft_draw_line(vars, point[1], point[2]);
 	ft_draw_line(vars, point[2], point[0]);
-	// 再帰
 	ft_rec(vars, center, size);
 }

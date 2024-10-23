@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fractol.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:10:06 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/16 18:33:07 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:43:09 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <math.h>
 # include <mlx.h>
 # include <stdint.h>
-// # include <stdio.h>
 
 # define WIDTH 500
 # define HEIGHT 500

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 12:46:16 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:44:22 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,20 @@ static void	ft_init(t_vars *vars, char *title)
 			&(vars->mlx_info->endian));
 }
 
-// コマンドライン引数に応じて初期化する
 static void	main_help(int argc, char **argv, t_vars *vars)
 {
 	if (ft_arg(argc, argv, vars->frac_type->complex) == 0)
 	{
-		//マンデルブロ集合
 		vars->frac_type->name = 'm';
 		ft_init(vars, "Mandelbrot");
 	}
 	else if (ft_arg(argc, argv, vars->frac_type->complex) == 1)
 	{
-		//ジュリア集合
 		vars->frac_type->name = 'j';
 		ft_init(vars, "Julia");
 	}
 	else if (ft_arg(argc, argv, vars->frac_type->complex) == 2)
 	{
-		//シェルピンスキーのギャスケット
 		vars->frac_type->name = 's';
 		ft_init(vars, "Sierpinski Gasket");
 	}

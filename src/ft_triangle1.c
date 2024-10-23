@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_triangle1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:09:45 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/16 17:52:45 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:47:13 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
 
-// 上向き正三角形を描画する関数
 void	ft_draw_triangle(t_vars vars, t_complex_num center, double size)
 {
 	t_point			point[3];
@@ -36,7 +35,6 @@ void	ft_draw_triangle(t_vars vars, t_complex_num center, double size)
 			/ (vars.viewport->r_max - vars.viewport->r_min) * WIDTH);
 	point[2].y = (int)((vars.viewport->i_max - point_complex[2].i)
 			/ (vars.viewport->i_max - vars.viewport->i_min) * HEIGHT);
-	// 3つの頂点を結ぶ
 	ft_draw_line(vars, point[0], point[1]);
 	ft_draw_line(vars, point[1], point[2]);
 	ft_draw_line(vars, point[2], point[0]);

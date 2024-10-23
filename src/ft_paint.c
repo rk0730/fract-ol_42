@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:28:21 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 13:15:35 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 13:44:35 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ static void	ft_put_color(t_vars vars, int iter, int x, int y)
 	int		pos;
 	double	h;
 
-	// 収束した場合は黒
 	if (iter == 100)
 		color = (20 << 16) | (20 << 8) | 20;
 	else
 	{
-		// HSV to RGB
 		h = iter / 100.0 + vars.frac_type->base_color;
-		// base_color(0.66)がないと赤くなり見にくい
 		color = ft_hsv_to_color(h, 1, 1);
 	}
 	pos = (y * vars.mlx_info->size_line) + (x * (vars.mlx_info->bpp / 8));
@@ -38,7 +35,6 @@ static int	ft_iter(t_vars vars, int x, int y)
 	t_viewport		*viewport;
 
 	viewport = vars.viewport;
-	// (0,0)が左上なので、yの値を逆にする
 	z.r = viewport->r_min + (x * (viewport->r_max - viewport->r_min) / WIDTH);
 	z.i = viewport->i_max - (y * (viewport->i_max - viewport->i_min) / HEIGHT);
 	if (vars.frac_type->name == 'm')
