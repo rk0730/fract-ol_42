@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 19:22:30 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 13:42:56 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 15:56:51 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static double	ft_atof_h2(char **str_p, double *fraction, double *divisor)
 	if (fraction_flag)
 	{
 		point = (*str_p);
-		while (isdigit(**str_p))
+		while (ft_isdigit(**str_p))
 		{
 			*fraction = *fraction * 10.0 + (**str_p - '0');
 			*divisor *= 10.0;
@@ -87,7 +87,7 @@ static void	ft_arg_h(int argc, char **argv, t_complex_num *complex_num)
 {
 	if (argc < 4)
 	{
-		ft_printf("Usage: ./fractol [m/j (double)x (double)y]\n");
+		ft_printf("Usage: ./fractol [m/j (double)x (double)y/s]\n");
 		exit(1);
 	}
 	complex_num->r = ft_atof(argv[2]);
