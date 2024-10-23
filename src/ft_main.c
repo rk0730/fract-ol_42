@@ -6,10 +6,11 @@
 /*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 12:43:29 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 12:44:24 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//commit test
 #include "ft_fractol.h"
 
 static void	ft_init(t_vars *vars, char *title)
