@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 19:22:30 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 15:56:51 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 18:04:16 by kitaoryoma       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fractol.h"
-#include <ctype.h>
-#include <stdio.h>
 
 static double	ft_atof_h1(char **str_p, int *sign, double *result)
 {
