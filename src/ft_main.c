@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:39:53 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/23 16:13:24 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:38:24 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	main_help(argc, argv, &vars);
 	ft_paint(vars);
 	mlx_put_image_to_window(mlx_info.mlx, mlx_info.win, mlx_info.img, 0, 0);
-	mlx_destroy_image(vars.mlx_info->mlx, vars.mlx_info->img);
+	// mlx_destroy_image(vars.mlx_info->mlx, vars.mlx_info->img);
 	mlx_mouse_hook(mlx_info.win, ft_zoom, &vars);
 	mlx_hook(mlx_info.win, ON_DESTROY, 0, ft_close, &mlx_info);
 	mlx_key_hook(mlx_info.win, ft_key_hook, &vars);

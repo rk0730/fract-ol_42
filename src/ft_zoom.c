@@ -6,7 +6,7 @@
 /*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:23:21 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/23 16:14:54 by rkitao           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:38:44 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int	ft_zoom(int event, int x, int y, t_vars *vars)
 	ft_coordinate(event, x, y, vars->viewport);
 	ft_paint(*vars);
 	mlx_put_image_to_window(mlx_info->mlx, mlx_info->win, mlx_info->img, 0, 0);
-	mlx_destroy_image(mlx_info->mlx, mlx_info->win);
+	// mlx_destroy_image(mlx_info->mlx, mlx_info->win);
 	return (0);
 }
