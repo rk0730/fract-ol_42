@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_paint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:28:21 by kitaoryoma        #+#    #+#             */
-/*   Updated: 2024/10/22 23:59:59 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:15:35 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static void	ft_put_color(t_vars vars, int iter, int x, int y)
 	double	h;
 
 	// 収束した場合は黒
-	if (iter == 1000)
+	if (iter == 100)
 		color = (20 << 16) | (20 << 8) | 20;
 	else
 	{
 		// HSV to RGB
-		h = iter / 1000.0 + vars.frac_type->base_color;
+		h = iter / 100.0 + vars.frac_type->base_color;
 		// base_color(0.66)がないと赤くなり見にくい
 		color = ft_hsv_to_color(h, 1, 1);
 	}

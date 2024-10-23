@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fractol.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:12:15 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/16 18:17:52 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/23 13:15:03 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_mandelbrot(t_complex_num c)
 	int				iter;
 	double			tmp;
 
-	max_iter = 1000;
+	max_iter = 100;
 	z.r = 0.0;
 	z.i = 0.0;
 	iter = 0;
@@ -40,7 +40,7 @@ int	ft_julia(t_complex_num z, t_complex_num c)
 	int				iter;
 	double			tmp;
 
-	max_iter = 1000;
+	max_iter = 100;
 	zn.r = z.r;
 	zn.i = z.i;
 	iter = 0;
