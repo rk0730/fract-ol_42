@@ -5,9 +5,9 @@ CFLAGS=-Wall -Wextra -Werror
 RM = rm -f
 
 # macOS用の設定
-ifeq ($(UNAME_S), Darwin)
-	MINILIBX_DIR = minilibx_opengl_20191021
-endif
+# ifeq ($(UNAME_S), Darwin)
+# 	MINILIBX_DIR = minilibx_opengl_20191021
+# endif
 # Ubuntu用の設定
 ifeq ($(UNAME_S), Linux)
 	MINILIBX_DIR = minilibx-linux
@@ -45,9 +45,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(MINILIBX) $(LIBFT) $(FTPRINTF)
 # macOS用の設定
-ifeq ($(UNAME_S), Darwin)
-	$(CC) $(INCLUDES) -framework OpenGL -framework AppKit -lm -o $@ $^
-endif
+# ifeq ($(UNAME_S), Darwin)
+# 	$(CC) $(INCLUDES) -framework OpenGL -framework AppKit -lm -o $@ $^
+# endif
 # Ubuntu用の設定
 ifeq ($(UNAME_S), Linux)
 	$(CC) $(INCLUDES) -o $@ $^ -lX11 -lXext -lm
