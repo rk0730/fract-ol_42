@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_zoom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kitaoryoma <kitaoryoma@student.42.fr>      +#+  +:+       +#+        */
+/*   By: rkitao <rkitao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:23:21 by rkitao            #+#    #+#             */
-/*   Updated: 2024/10/23 17:40:20 by kitaoryoma       ###   ########.fr       */
+/*   Updated: 2024/10/30 14:36:59 by rkitao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_coordinate(int event, int x, int y, t_viewport *port)
 
 	mouse_r = (double)x / WIDTH * (port->r_max - port->r_min) + port->r_min;
 	mouse_i = (double)y / HEIGHT * (port->i_max - port->i_min) + port->i_min;
-	// mouse_i = port->i_max - (double)y / HEIGHT * (port->i_max - port->i_min);
 	if (event == SCROLL_UP)
 	{
 		new_r_range = (port->r_max - port->r_min) / 1.25;
