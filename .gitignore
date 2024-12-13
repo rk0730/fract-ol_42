@@ -1,0 +1,8 @@
+*.a
+*.o
+.DS_Store
+.vscode/
+
+fractol
+minilibx-linux/
+minilibx_opengl_20191021/
